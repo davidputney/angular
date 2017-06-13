@@ -1,0 +1,15 @@
+<table>
+  <tbody>
+    <tr ng-click="tbl.testFoo($event)">
+      <th ng-repeat="headerCell in tbl.headerData" data-term="{{headerCell}}">
+        {{headerCell}}
+      </th>
+    </tr>
+  </tr>
+  <tr ng-repeat="row in tbl.booksData">
+    <td ng-repeat="cell in row">
+      {{cell}}
+    </td>
+  </tr>
+</tbody>
+</table>
