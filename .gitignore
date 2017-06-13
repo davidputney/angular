@@ -8,3 +8,4 @@ source/sass/vendor
 source/svg/svgsprite.svg
 source/scripts/vendor
 node_modules
+source/scripts/angular.min.js
