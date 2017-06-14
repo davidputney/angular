@@ -9,7 +9,6 @@ let data = [
   ["She: A History of Adventure", "H. Rider Haggard", "English", "1887", "100 million"],
 ];
 
-
 angular.module('tableApp', [])
   .controller('tableController', [function() {
     var table=this;
