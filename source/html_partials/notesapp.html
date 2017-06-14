@@ -1,0 +1,21 @@
+<section ng-app="notesapp">
+  <div ng-controller="MainCntrl as ctrl">
+    <button ng-click="ctrl.changenotes()">Change notes</button>
+    <div class="note-wrapper">
+      <div ng-repeat="note in ctrl.notes" class="note">
+          {{ note.$$hashKey }}
+          <span class="label">{{note.label}}</span>
+          <span class="author" ng-bind="note.done"></span>
+        </div>
+      </div>
+
+    <div class="note-wrapper">
+      <div ng-repeat="note in ctrl.notesToo track by note.id" class="note">
+        <span class="label">{{ note.$$hashKey }} x</span>
+        <span class="label">{{note.label}}</span>
+        <span class="author" ng-bind="note.done"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
