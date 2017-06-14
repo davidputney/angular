@@ -43,7 +43,8 @@ var svgstore = require('gulp-svgstore'),
 
 // post css
 var postcss = require('gulp-postcss'),
-    gradient = require('postcss-easing-gradients');
+    gradient = require('postcss-easing-gradients'),
+    pxtorem = require('postcss-pixels-to-rem');
 //bower
 // var mainBowerFiles = require('main-bower-files');
 
@@ -69,6 +70,8 @@ var paths = {
   scripts : {
     input : 'source/scripts/*.js',
     exclude : 'source/scripts/exclude/*.js',
+    tests: 'source/scripts/tests/*.js',
+    testsOutput: 'test/scripts/tests/',
     // bower : 'bower_components/**/*.js',
     vendor : 'source/scripts/vendor/*.js',
     testing : 'test/scripts/',
@@ -146,7 +149,7 @@ gulp.task('templates', function() {
 });
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
-  gulp.src([paths.scripts.vendor, paths.scripts.input,'!' + paths.scripts.exclude])
+  gulp.src([paths.scripts.vendor, paths.scripts.input,'!' + paths.scripts.exclude, '!' + paths.scripts.tests])
    .pipe(babel())
    .pipe(concat('main.js'))
    .pipe(gulp.dest(paths.scripts.testing))
@@ -158,6 +161,10 @@ gulp.task('exclude', function() {
    .pipe(gulp.dest(paths.scripts.testing))
    .pipe(minifyJS())
    .pipe(gulp.dest(paths.scripts.dist));
+});
+gulp.task('test', function() {
+  gulp.src(paths.scripts.tests)
+   .pipe(gulp.dest(paths.scripts.testsOutput))
 });
 // lints main javascript file for site
 gulp.task('lint', function() {
@@ -213,6 +220,7 @@ gulp.task('css', function() {
   var plugins = [
     autoprefixer({browsers: ['last 2 versions']}),
     // cssnano()
+    pxtorem(),
     gradient()
   ];
   gulp.src([paths.styles.input, paths.styles.exclude])
@@ -350,6 +358,10 @@ gulp.task('listen', function () {
       gulp.start('lint');
       gulp.start('concat');
     });
+    // tests
+      gulp.watch(paths.scripts.tests).on('change', function(file) {
+      gulp.start('test');
+    });
     // css
       gulp.watch(paths.styles.watch).on('change', function(file) {
       gulp.start('css');
@@ -382,6 +394,7 @@ gulp.task('default', [
 	'templates',
 	'css',
 	'svg',
+  'test',
 	// 'bower',
   'lint',
   'siteart',
