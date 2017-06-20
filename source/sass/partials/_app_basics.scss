@@ -73,3 +73,44 @@ h2 {
 .pending {
   background-color:red;
 }
+.form-wrapper {
+  max-width:500px;
+  margin:rem(30) auto;
+}
+.form-form {
+  display:block;
+  margin:0 0 rem(40);
+}
+.form-input {
+  width:100%;
+  border:1px solid #d0d0d0;
+  border-radius:3px;
+  font-size:rem(18);
+  font-family:"Helvetica Neue", sans-serif;
+  color:#444;
+  padding:rem(8);
+  display:block;
+  margin:0 0 rem(25) 0;
+}
+.form-input.ng-dirty.ng-invalid {
+  border:1px solid red;
+  transition: border .3s;
+}
+.form-button {
+  background-color: RoyalBlue;
+  border:0px;
+  color:white;
+  border-radius:3px;
+  font-size:rem(18);
+  font-family:"Helvetica Neue", sans-serif;
+  padding: rem(8) rem(16);
+}
+.form-button:disabled {
+  background-color: LightSkyBlue;
+}
+.form-button.secondary {
+  background-color: #666;
+}
+.form-button.secondary:disabled {
+  background-color: #d0d0d0;
+}
