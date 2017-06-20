@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "Sentimental": "^1.0.1",
+    "angular-messages": "^1.6.4",
     "browserify": "^11.0.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
