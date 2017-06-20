@@ -1,0 +1,125 @@
+<section ng-app="notesapptoo" class="form-wrapper">
+  <div ng-controller="MainCtrl as ctrl">
+
+    <form novalidate name ="myForm">
+      <div>
+        <input
+          type="text"
+          class="form-input"
+          name="uname"
+          ng-model="ctrl.user.username"
+          required=""
+          placeholder="Username"
+          ng-minlength="4" />
+        <input type="password"
+          class="form-input"
+          name="pwd"
+          ng-model="ctrl.user.password"
+          placeholder="Password"
+          required="" />
+      </div>
+      <ng-form name ="profile">
+        <input
+          type ="text"
+          class="form-input"
+          name="firstName"
+          ng-model="ctrl.user.profile.firstName"
+          placeholder="First Name"
+          required >
+        <input
+          type="text"
+          class="form-input"
+          name="middleName"
+          placeholder="Middle Name"
+          ng-model="ctrl.user.profile.middleName">
+        <input
+          type="text"
+          class="form-input"
+          name="lastName"
+          placeholder="Last Name"
+          ng-model="ctrl.user.profile.lastName"
+          required>
+        <input
+          type="date"
+          class="form-input"
+          name="dob"
+          placeholder="Date Of Birth"
+          ng-model="ctrl.user.profile.dob">
+        </ng-form>
+
+        <span ng-show="myForm.profile.$invalid">Please fill out the profile information</span>
+        <input type="submit" value="Submit"
+        ng-disabled="myForm.$invalid"/>
+      </form >
+
+
+
+
+
+      <!-- <form class="form-form" ng-submit="ctrl.submit1()"         ng-model-options="ctrl.modelOptions" name="simpleForm">
+      <input
+        class="form-input"
+        type="email"
+        placeholder="Email Address"
+        name="uname"
+        ng-model="ctrl.user1.username"
+        required
+        ng-minlength="6"/>
+
+      <script type="text/ng-template" id="error-messages">
+        <p ng-message="required">This field is mandatory</p>
+        <p ng-message="minlength">Minimum length condition not met</p>
+        <p ng-message="email">Please enter a valid email address</p>
+      </script>
+
+      <div ng-messages="simpleForm.uname.$error" ng-messages-multiple ng-messages-include="error-messages">
+      </div>
+
+      <input
+      class="form-input"
+      type="password"
+      placeholder="Password"
+      name="pwd"
+      ng-model="ctrl.user1.password"
+      ng-minlength="4"
+      required />
+
+      <div ng-messages="simpleForm.pwd.$error" ng-messages-include="error-messages">
+      </div>
+
+      <input class="form-button" type="submit" value="Submit" ng-disabled="simpleForm.$invalid"/>
+    </form>
+
+    <form class="form-form" ng-submit="ctrl.submit2()" name="overriddenForm">
+      <input
+        class="form-input"
+        type="email"
+        name="uname"
+        placeholder="Email Address"
+        ng-model="ctrl.user2.username"
+        required
+        ng-minlength="6">
+
+        <div ng-messages="overriddenForm.uname.$error" ng-messages-include="error-messages">
+          <p ng-message="required">
+            Please enter an email address
+          </p>
+        </div>
+
+      <input
+        class="form-input"
+        type="password"
+        placeholder="Password"
+        name="pwd"
+        ng-model="ctrl.user2.password"
+        required />
+
+        <div ng-messages="overriddenForm.pwd.$error">
+          <p ng-message="required">
+            Please enter a password.
+          </p>
+        </div>
+          <input class="form-button" type="submit" value="Submit" ng-disabled="overriddenForm.$invalid"/>
+      </form> -->
+  </div>
+</section>

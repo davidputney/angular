@@ -1,0 +1,35 @@
+<section ng-app="notesappChFive" class="form-wrapper">
+  <div ng-controller="MainCtrlChFive as mainCtrl">
+    <h1>Hello controllers</h1>
+    <button ng-click="mainCtrl.open('first')">First</button>
+    <button ng-click="mainCtrl.open('second')">Second</button>
+
+    <div ng-switch="mainCtrl.tab">
+
+      <div ng-switch-when="first">
+        <div ng-controller="subCtrl as ctrl">
+          <h3>first tab</h3>
+          <ul>
+            <li ng-repeat="item in ctrl.list()">
+              <span>{{item.label}}</span>
+            </li>
+          </ul>
+          <button ng-click="ctrl.add()">Add more items</button>
+        </div>
+      </div>
+
+      <div ng-switch-when="second">
+        <div ng-controller="subCtrl as ctrl">
+          <h3>second tab</h3>
+          <ul>
+            <li ng-repeat="item in ctrl.list()">
+              <span>{{item.label}}</span>
+            </li>
+          </ul>
+          <button ng-click="ctrl.add()">Add more items</button>
+        </div>
+      </div>
+
+  </div>
+  </div>
+</section>

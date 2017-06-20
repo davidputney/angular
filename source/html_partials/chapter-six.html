@@ -1,0 +1,27 @@
+<section ng-app="notesappChSix" class="form-wrapper">
+  <div ng-controller="MainCtrlChSix as mainCtrl">
+      <form name="addForm" ng-submit="mainCtrl.add()">
+        <input type="text"
+          placeholder="Label"
+          ng-model="mainCtrl.newTodo.label"
+          required/>
+        <input type=text
+          placeholder="Author"
+          ng-model="mainCtrl.newTodo.author"
+          required/>
+        <input type="submit"
+          value="Add"
+          ng-disabled="addForm.$invalid" />
+      </form>
+
+      <div ng-repeat="todo in mainCtrl.items">
+      <div>
+        <span>{{todo.label}}</span>
+      </div>
+      <div>
+        - by <span>{{todo.author}}</span>
+      </div>
+    </div>
+
+  </div>
+</section>
