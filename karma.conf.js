@@ -18,7 +18,9 @@ module.exports = function(config) {
       'test/scripts/angular.min.js',
       'test/scripts/angular-mocks.js',
       'test/scripts/main.js',
-      'test/scripts/tests/simpleSpec.js'
+      // 'test/scripts/tests/simpleSpecChSeven.js'
+      // 'test/scripts/tests/timeAgoTest.js'
+      'test/scripts/tests/stocks-test.js'
     ],
 
     // list of files to exclude
@@ -39,7 +41,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 8080,
+    port: 5000,
 
 
     // enable / disable colors in the output (reporters and logs)

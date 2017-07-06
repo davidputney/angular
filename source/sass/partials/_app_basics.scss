@@ -34,14 +34,17 @@
   left:-1000000px;
 }
 
+body {
+  font-family: "Helvetica Neue", sans-serif;
+}
 h1 {
-    font-family: "Open Sans", fontstack("Arial");
+    // font-family: "Open Sans", fontstack("Arial");
     font-size:em(32);
     border:rem(1) solid red;
 }
 
 h2 {
-    font-family: "Droid Sans", fontstack("Extra Stack");
+    // font-family: "Droid Sans", fontstack("Extra Stack");
     font-size:rem(32);
     padding:rem(32), rem(20), rem(15), rem(0);
 }
@@ -104,6 +107,8 @@ h2 {
   font-size:rem(18);
   font-family:"Helvetica Neue", sans-serif;
   padding: rem(8) rem(16);
+  display:block;
+  margin: rem(20) auto;
 }
 .form-button:disabled {
   background-color: LightSkyBlue;
@@ -113,4 +118,154 @@ h2 {
 }
 .form-button.secondary:disabled {
   background-color: #d0d0d0;
+}
+.form-label {
+  font-size:rem(16);
+  font-family:"Helvetica Neue", sans-serif;
+  display:block;
+  margin: 0 0 rem(10);
+}
+
+// .landing {
+//     background-image: url("http://img.fifa.com/mm/photo/tournament/loc/02/31/42/51/2314251_big-lnd.jpg");
+// }
+body {
+    padding-bottom: 20px;
+}
+.top-bar {
+    background-color: antiquewhite;
+    height: 60px;
+    font-size: 30px;
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+    h1 {
+      margin:0;
+      font-size:rem(20);
+    }
+    span {
+      font-size:rem(16);
+      font-weight:normal;
+      margin:0;
+      padding:0;
+    }
+}
+
+.jumbotron {
+    width: 70%;
+    margin: auto;
+    top: 30%;
+    position: absolute;
+}
+
+.login-container {
+    margin-top: 100px;
+    background-color: floralwhite;
+    width: 40%;
+    left: 30%;
+    position: absolute;
+}
+
+.card {
+    -webkit-box-shadow: 2px 2px 2px 2px #f5f5f5;
+    -moz-box-shadow: 2px 2px 2px 2px #f5f5f5;
+    box-shadow: 2px 2px 2px 2px #f5f5f5;
+
+}
+.login-card {
+    width: 80%;
+    margin: auto;
+}
+.login-form {
+    padding: 10%;
+}
+
+.team-list-container {
+    margin-top: 50px;
+    width: 50%;
+    left: 25%;
+    position: absolute;
+    background-color: whitesmoke;
+    padding: 20px;
+    opacity: 0.95;
+}
+
+.team-list-container .team {
+    margin: 5px;
+    border: black 1px solid;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.team-list-container .team .team-info {
+
+}
+
+.team-list-container .team .team-info .flag {
+    height: 100px;
+    width: 100px;
+}
+
+.team-list-container .team .team-info .rank {
+    font-size: 70px;
+    margin-top: 0%;
+    color: cornflowerblue;
+}
+
+.team-list-container .team .team-info .name {
+    font-size: 50px;
+}
+
+.team-details-container {
+    margin-top: 2%;
+    position: absolute;
+    background-color: lavender;
+    width: 60%;
+    text-align: center;
+    left: 20%;
+    padding-bottom: 10px;
+    opacity: 0.95;
+}
+
+.team-details-container .team-logo img {
+    height: 400px;
+    width: 400px;
+    margin-top: 9px;
+    border: black 2px solid;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+.team-details-container .name {
+    font-size: 30px;
+    margin-top: 10px;
+    color: #269abc;
+    font-weight: bolder;
+}
+
+.team-details-container .label{
+    color: firebrick;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.team-details-container .title {
+    margin-top: 10px;
+    font-size: 40px;
+    font-family: monospace;
+    color: #3276b1;
+}
+
+.team-details-container .detail {
+    border: azure 5px solid;
+    margin: 10px;
+}
+.wrapper {
+  border:1px solid red;
+  display:flex;
+}
+.left, .right {
+  border:1px solid blue;
+  width:50%;
 }

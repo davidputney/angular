@@ -140,9 +140,9 @@ gulp.task('templates', function() {
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(htmltidy({doctype: 'html5',
-                  hideComments: false,
-                  indent: true}))
+    // .pipe(htmltidy({doctype: 'html5',
+    //               hideComments: false,
+    //               indent: true}))
    .pipe(gulp.dest(paths.pageTemplates.testing))
    .pipe(htmlmin({collapseWhitespace: true}))
    .pipe(gulp.dest(paths.pageTemplates.dist));
@@ -164,7 +164,48 @@ gulp.task('exclude', function() {
 });
 gulp.task('test', function() {
   gulp.src(paths.scripts.tests)
-   .pipe(gulp.dest(paths.scripts.testsOutput))
+  .pipe(eslint(
+    {
+      "parser": "babel-eslint",
+      rules: {
+            'no-alert': 0,
+            'no-bitwise': 0,
+            'camelcase': 1,
+            'curly': 1,
+            'eqeqeq': 0,
+            'no-eq-null': 0,
+            'guard-for-in': 1,
+            'no-empty': 1,
+            'no-use-before-define': 1,
+            'no-obj-calls': 2,
+            'no-unused-vars': 1,
+            'new-cap': 1,
+            'no-shadow': 0,
+            'strict': 1,
+            'no-invalid-regexp': 2,
+            'comma-dangle': 2,
+            'no-undef': 1,
+            'no-new': 1,
+            'no-extra-semi': 1,
+            'no-debugger': 2,
+            'no-caller': 1,
+            'semi': 1,
+            'quotes': 1,
+            'no-unreachable': 2,
+            'jsx-quotes': 1
+          },
+      envs: [
+        'browser', 'es6', 'react'
+      ],
+      plugins: ["react"],
+      extends: {
+        eslint: "recommended"
+      }
+  }
+  ))
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+  .pipe(gulp.dest(paths.scripts.testsOutput))
 });
 // lints main javascript file for site
 gulp.task('lint', function() {
@@ -300,7 +341,7 @@ gulp.task('webserver', function() {
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
-      open: true
+      open: false
     }));
 });
 // creates blog images in four sizes, minifies, moves to testing and dist

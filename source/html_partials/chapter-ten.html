@@ -1,0 +1,59 @@
+<section ng-app="fifaApp" class="landing">
+  <div class="top-bar"  ng-controller="MainCtrl as mainCtrl">
+    <div class="pull-left">
+      <span><a href="#/">FIFA TEAMS</a></span>
+    </div>
+    <div class="pull-right">
+      <span ng-hide="mainCtrl.userService.isLoggedIn">
+        <a href="#!/login">Login</a>
+      </span>
+      <span ng-show="mainCtrl.userService.isLoggedIn">
+        <!-- server-side route, not a client-side route -->
+        <a href="#!/api/logout">Logout</a>
+      </span>
+    </div>
+  </div>
+  <div ng-view></div>
+</section>
+
+
+
+<!-- <section ng-app="fifaApp" class="landing">
+  <div class="top-bar" ng-controller="MainCtrl as mainCtrl">
+      <div class="wrapper">
+        <div class="left">
+          <h1><a href="#/">FIFA teams</a></h1>
+        </div>
+        <div class="right">
+          <span ng-hide="mainCtrl.userService.isLoggedIn">
+            <a href="#/login">Log in</a>
+          </span>
+          <span ng-show="mainCtrl.userService.isLoggedOut">
+            <a href="#/api/logout">Log out</a>
+          </span>
+      </div>
+    </div>
+    <div ng-view>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section ng-app="fooApp" class="landing">
+  <div class="top-bar" ng-controller="fooAppCtrl as ctrl">
+    <span>xx{{ctrl.foobar}}</span>
+  </div>
+</section> -->
+
+
+<!-- <section ng-app="resolveApp" class="form-wrapper">
+  <div ng-controller="MainCtrlChTen as ctrl">
+      <h2>Angular Routing App</h2>
+      <ul>
+        <li><a href="#">Route one</a></li>
+        <li><a href="#!/second">Route two</a></li>
+        <li><a href="#!/dsddsf">Nonexistant route</a></li>
+      </ul>
+      <div ng-view>
+      </div>
+  </div>
+</section> -->

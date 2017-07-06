@@ -1,0 +1,29 @@
+<section ng-app="stockMarketApp">
+  <div ng-controller="MainCtrlEleven as mainCtrl" >
+
+    <h3>List of stocks</h3>
+    <div simple-stock-repeat="mainCtrl.stocks">
+      We found {{stock.name}} at {{currentIndex}}
+    </div>
+    <!-- <div ng-repeat="s in mainCtrl.stocks">
+      <div stock-widget
+      stock-data="s">
+      Recommended Stock: {{s.name}}
+      </div>
+    </div> -->
+
+
+    <!-- <h3>List of stocks repeating manually</h3>
+    <div stock-widget stock-data="mainCtrl.stocks[0]">
+    </div>
+    <div stock-widget stock-data="mainCtrl.stocks[1]">
+    </div>
+    <button ng-click="mainCtrl.changeAllStocks()">Change all stocks</button>
+    <button ng-click="mainCtrl.changeFirstStock()">Change first stock</button> -->
+    <!-- <h3>List of stocks</h3> -->
+    <!-- <div ng-repeat="s in mainCtrl.stocks">
+      <div stock-widget stock-data="s">
+      </div>
+    </div> -->
+  </div>
+</section>
