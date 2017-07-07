@@ -43,7 +43,8 @@ var svgstore = require('gulp-svgstore'),
 
 // post css
 var postcss = require('gulp-postcss'),
-    gradient = require('postcss-easing-gradients');
+    gradient = require('postcss-easing-gradients'),
+    pixelstorem = require('postcss-pixels-to-rem');
 //bower
 // var mainBowerFiles = require('main-bower-files');
 
@@ -213,7 +214,8 @@ gulp.task('css', function() {
   var plugins = [
     autoprefixer({browsers: ['last 2 versions']}),
     // cssnano()
-    gradient()
+    gradient(),
+    pixelstorem()
   ];
   gulp.src([paths.styles.input, paths.styles.exclude])
    .pipe(scsslint())
