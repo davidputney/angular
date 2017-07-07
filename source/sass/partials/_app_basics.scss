@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
 .one-column {
   width:100%;
 }
@@ -35,13 +41,10 @@
 }
 
 h1 {
-    font-family: "Open Sans", fontstack("Arial");
     font-size:em(32);
-    border:rem(1) solid red;
 }
 
 h2 {
-    font-family: "Droid Sans", fontstack("Extra Stack");
     font-size:rem(32);
     padding:rem(32), rem(20), rem(15), rem(0);
 }

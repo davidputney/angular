@@ -1,0 +1,82 @@
+.notes-container {
+  display:flex;
+  border:1px solid blue;
+}
+.notes-note {
+  position: relative;
+  width:25%;
+  background-color: #ffffe0;
+  padding-top:25%;
+  margin:rem(10);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 2px 8px rgba(#d0d0d0, .5);
+}
+.notes-content {
+  position: absolute;
+  top:0;
+  left:0;
+  padding:rem(10);
+  width:calc(100% - rem(20));
+}
+.notes-options {
+  position: absolute;
+  bottom:0;
+  width:100%
+}
+.notes-form {
+  display:flex;
+  width:100% ;
+  justify-content: space-around;
+  margin: 0 0 rem(20);
+}
+.notes-text {
+  font-size:rem(18);
+  color:#444;
+  padding:0 0 rem(30) 0;
+}
+.notes-author {
+  font-size:rem(16);
+  color:#666;
+}
+.notes-btn {
+  border:1px solid #444;
+  background-color:#ffffe0;
+  padding:rem(10) rem(15);
+  border-radius: 3px;
+  display:block;
+}
+.notes-checkbox {
+  display: block;
+  margin: rem(10) 0 0 0;
+}
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  cursor: pointer;
+}
+[type="checkbox"]:not(:checked) + label::before {
+  content: "";
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:1px solid #444;
+  vertical-align: -5px;
+  margin: 0 rem(10) 0 0;
+}
+[type="checkbox"]:checked + label::before {
+  content: "";
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:1px solid #444;
+  vertical-align: -5px;
+  margin: 0 rem(10) 0 0;
+  background-color: #d0d0d0;
+}
