@@ -8,7 +8,7 @@ angular.module('notesApp', ['ngRoute'])
       controller: 'notesController as notes'
     });
   }])
-  .controller('notesController', ['getData', function(getData) {
+  .controller('notesController', ['getData', 'setData', function(getData, setData) {
     var self=this;
     let data;
     let dataUrl = 'https://putneyangular.firebaseio.com/notes.json'
@@ -16,12 +16,36 @@ angular.module('notesApp', ['ngRoute'])
       self.data = response.data;
     }, function(errResponse) {
     }
-);
+  );
+  self.saveAction = function() {
+    let foo = setData.notes(self.data);
+
+    console.log('foo', foo);
+  }
 }])
 .factory('getData', ['$http', function($http){
   return {
     notes: function(url) {
       return $http.get(url)
+    }
+  }
+}])
+// this is where you stopped on Friday. You were in the middle of making a service that would save the values to the database and then return a success callback in the form of a notificaton that it had updated in the DB
+// url of the documentation https://firebase.google.com/docs/database/web/read-and-write
+
+.factory('setData', ['$http', function($http) {
+  var self=this;
+  // var database = firebase.database();
+  let url = '/notes'
+  var database = firebase.database().ref(url);
+  return {
+    notes: function(notes) {
+      database.set(notes);
+      let bar;
+      database.on('value', function(snapshot) {
+        bar = snapshot.val();
+      });
+      return bar;
     }
   }
 }])
@@ -84,8 +108,8 @@ angular.module('notesApp', ['ngRoute'])
 //        "done": false
 //      }
 //  ];
-//
-//
+// //
+// //
 // var database = firebase.database();
 //
 // firebase.database().ref('notes/').set(notes);

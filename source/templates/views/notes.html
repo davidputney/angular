@@ -1,5 +1,5 @@
 <div class="notes-container">
-  <article class="notes-note" ng-repeat="s in notes.data">
+  <article class="notes-note" ng-repeat="s in notes.data track by $index"">
     <div class="notes-content">
       <p class="notes-text" ng-bind="s.note">
       </p>
@@ -15,11 +15,11 @@
   </article>
     <article class="notes-note">
       <div class="notes-options">
-          <form class="notes-form">
+          <form>
           <input type="textfield"/>
           <input type="text" />
           <input type="checkbox" id="done" /><label for="done" class="notes-checkbox">Done</label>
-          <button class="notes-btn">Remove</button>
+          <button ng-click="notes.saveAction()" class="notes-btn">Save</button>
         </form>
       </div>
     </article>
