@@ -1,5 +1,11 @@
-<div class="notes-container">
-  <article class="notes-note" ng-repeat="s in notes.data track by $index"">
+<div class="notes-container" ng-switch on="notes.modal">
+  <article class="notes-note" ng-repeat="s in notes.data track by $index" ng-switch on="notes.modal">
+<div class="notes-modal" ng-if="$index == notes.modal">
+      <p>Are you sure that you want to remove this?</p>
+      <button type="cancel" value="null" class="notes-btn" ng-click="notes.dismissAlert($event)">Cancel</button>
+      <button type="submit" value="{{$index}}" class="notes-btn" ng-click="notes.removeAction($event)">Remove</button>
+    </form>
+    </div>
     <div class="notes-content">
       <p class="notes-text" ng-bind="s.note">
       </p>
@@ -8,19 +14,34 @@
     </div>
     <div class="notes-options">
       <form class="notes-form">
-        <input type="checkbox" id="done-{{$index}}" /><label for="done-{{$index}}" class="notes-checkbox">Done</label>
-        <button class="notes-btn">Remove</button>
+        <input type="checkbox"
+        ng-model="s.done"
+        ng-true-value="true"
+        ng-false-value="false"
+        />
+        <label for="done-{{$index}}" class="notes-checkbox">Done</label>
+        <button type="submit" value="{{$index}}" class="notes-btn" ng-click="notes.removeAlert($event)">Remove</button>
       </form>
     </div>
   </article>
     <article class="notes-note">
-      <div class="notes-options">
-          <form>
-          <input type="textfield"/>
-          <input type="text" />
-          <input type="checkbox" id="done" /><label for="done" class="notes-checkbox">Done</label>
-          <button ng-click="notes.saveAction()" class="notes-btn">Save</button>
+      <div class="notes-content">
+        <form ng-submit="notes.saveAction()">
+          <input ng-model="notes.formData.note" type="textfield" placeholder="note"/>
+          <input ng-model="notes.formData.author" type="text" placeholder="author"/>
+          <input type="checkbox" id="done" ng-model="notes.formData.done" />
+          <label for="done" class="notes-checkbox">Done</label>
+          <button type="submit" value="Submit" class="notes-btn">Save</button>
         </form>
       </div>
     </article>
+</div>
+</div>
+
+<div class="notes-container">
+    <div ng-switch on="notes.modal">
+      <div ng-switch-when="modal1">Settings Div</div>
+      <div ng-switch-when="modal2">Home Span</div>
+      <div ng-switch-default>default</div>
+   </div>
 </div>

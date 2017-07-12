@@ -1,3 +1,4 @@
+
 angular.module('notesApp', ['ngRoute'])
 .value('Constant', {
   MAGIC_NUMBER: 42
@@ -11,6 +12,7 @@ angular.module('notesApp', ['ngRoute'])
   .controller('notesController', ['getData', 'setData', function(getData, setData) {
     var self=this;
     let data;
+    self.modal;
     let dataUrl = 'https://putneyangular.firebaseio.com/notes.json'
     getData.notes(dataUrl).then(function(response) {
       self.data = response.data;
@@ -18,9 +20,29 @@ angular.module('notesApp', ['ngRoute'])
     }
   );
   self.saveAction = function() {
-    let foo = setData.notes(self.data);
-
-    console.log('foo', foo);
+    var self=this;
+    let fooBar = self.data;
+    fooBar.push(self.formData);
+    let dataVal = setData.notes(fooBar);
+    self.data = dataVal;
+  },
+  self.removeAlert = function(e) {
+    var self=this;
+    self.modal = e.target.value;
+    console.log(self.modal);
+  },
+  self.dismissAlert = function(e) {
+    console.log('dismiss', e.target.value);
+    var self=this;
+    self.modal = e.target.value;
+  },
+  self.removeAction = function(e) {
+    var self=this;
+    let foo = self.data.slice();
+    foo.splice(e.target.value, 1);
+    let dataVal = setData.notes(foo);
+    self.data = dataVal;
+    self.modal = null;
   }
 }])
 .factory('getData', ['$http', function($http){
@@ -30,12 +52,8 @@ angular.module('notesApp', ['ngRoute'])
     }
   }
 }])
-// this is where you stopped on Friday. You were in the middle of making a service that would save the values to the database and then return a success callback in the form of a notificaton that it had updated in the DB
-// url of the documentation https://firebase.google.com/docs/database/web/read-and-write
-
 .factory('setData', ['$http', function($http) {
   var self=this;
-  // var database = firebase.database();
   let url = '/notes'
   var database = firebase.database().ref(url);
   return {
@@ -91,23 +109,23 @@ angular.module('notesApp', ['ngRoute'])
 
 
 
-//   var notes = [
-//      {
-//        "note": "This is note number one here here hehre",
-//        "author": "Heywood Jablowme",
-//        "done": true
-//      },
-//      {
-//        "note": "This is two this is note text here",
-//        "author": "Seymour Butz",
-//        "done": false
-//      },
-//      {
-//        "note": "This is note three here here here here",
-//        "author": "Cora Spondent",
-//        "done": false
-//      }
-//  ];
+ //  var notes = [
+ //     {
+ //       "note": "This is note number one here here hehre",
+ //       "author": "Heywood Jablowme",
+ //       "done": true
+ //     },
+ //     {
+ //       "note": "This is two this is note text here",
+ //       "author": "Seymour Butz",
+ //       "done": false
+ //     },
+ //     {
+ //       "note": "This is note three here here here here",
+ //       "author": "Cora Spondent",
+ //       "done": false
+ //     }
+ // ];
 // //
 // //
 // var database = firebase.database();
