@@ -1,18 +1,15 @@
+.space-10 {
+  margin-bottom: 10px;
+}
+.space-20 {
+  margin-bottom: 20px;
+}
+.space-30 {
+  margin-bottom: 30px;
+}
 .notes-container {
   display:flex;
-  border:1px solid blue;
   flex-wrap: wrap;
-}
-.notes-modal {
-  position: absolute;
-  height:100%;
-  width:100%;
-  // background-color:rgba(#000, .6);
-  background-color: white;
-  border:1px solid red;
-  top:0;
-  left:0;
-  z-index:1;
 }
 .notes-note {
   position: relative;
@@ -26,43 +23,157 @@
   justify-content: center;
   box-shadow: 2px 2px 8px rgba(#d0d0d0, .5);
 }
+.notes-modal {
+  position: absolute;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1;
+}
+.notes-modal.edit {
+  background-color: #ffffe0;
+}
+.notes-modal.reversed {
+  padding:20px;
+  background-color:rgba(#222, .8);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  p {
+    color:white;
+    text-align: center;
+    font-weight:bold;
+    line-height: 1.6;
+  }
+}
+.notes-note {
+    &:last-child {
+      box-shadow: none;
+      .notes-modal.edit {
+        background-color: white;
+        border:3px dashed #d0d0d0;
+        border-radius:8px;
+      }
+    }
+}
 .notes-content {
   position: absolute;
   top:0;
   left:0;
-  padding:rem(10);
-  width:calc(100% - rem(20));
+  margin:rem(30);
+  width:calc(100% - 60px);
+  display:block;
+  border:0;
+  padding:0;
 }
 .notes-options {
   position: absolute;
   bottom:0;
-  width:100%
+  width:100%;
+  padding:0 20px;
 }
 .notes-form {
   display:flex;
   width:100% ;
-  justify-content: space-around;
+  justify-content: flex-end;
   margin: 0 0 rem(20);
+  position: relative;
+}
+.notes-form.edit {
+  display:flex;
+  width:100% ;
+  justify-content: space-around;
+  position: absolute;
+  bottom:0;
+  width:100%;
+  flex-direction: row;
+  border:0px;
+  padding:0 20px 0 0;
+  margin: 0 0 rem(20);
+  text-align: right;
 }
 .notes-text {
   font-size:rem(18);
   color:#444;
   padding:0 0 rem(30) 0;
+  margin:0;
 }
 .notes-author {
   font-size:rem(16);
   color:#666;
+  margin:0;
+}
+.notes-text.edit {
+  border:0px;
+  background-color: none;
+}
+[type="text"].edit {
+  border:0px;
+  background-color: transparent;
+    &:active {
+      background-color: transparent;
+      color:black;
+      outline:none;
+    }
+    &:focus {
+      background-color: transparent;
+      color:black;
+      outline:none;
+    }
+    &::placeholder {
+      color:#999;
+    }
 }
 .notes-btn {
   border:1px solid #444;
-  background-color:#ffffe0;
+  background-color:transparent;
   padding:rem(10) rem(15);
   border-radius: 3px;
   display:block;
 }
+.notes-btn.close {
+  border:0px;
+  position: absolute;
+  top:10px;
+  right:10px;
+  padding:0;
+}
+.notes-btn.white {
+  border:1px solid white;
+  color:white;
+}
+.notes-btn.secondary {
+  border:0px;
+}
+.notes-btn.close:hover {
+  .icn-close {
+    fill:#9E9E74;
+    transition: fill .1s;
+  }
+}
+.notes-btn.hack {
+  position: absolute;
+  margin:-5px 0 0 20px;
+  z-index: 1;
+}
+.icn-close {
+  width:rem(20);
+  height:rem(20);
+  fill:#D2D2AB;
+  pointer-events: none;
+  transition: fill .1s;
+}
 .notes-checkbox {
   display: block;
   margin: rem(10) 0 0 0;
+  font-size:14px;
+  color:#666;
+}
+.notes-checkbox.hack {
+  position: absolute;
+  display: block;
 }
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
@@ -77,19 +188,19 @@
 [type="checkbox"]:not(:checked) + label::before {
   content: "";
   display:inline-block;
-  width:20px;
-  height:20px;
-  border:1px solid #444;
-  vertical-align: -5px;
-  margin: 0 rem(10) 0 0;
+  width:15px;
+  height:15px;
+  border:1px solid #666;
+  vertical-align: -3px;
+  margin: 0 rem(8) 0 0;
 }
 [type="checkbox"]:checked + label::before {
   content: "";
   display:inline-block;
-  width:20px;
-  height:20px;
-  border:1px solid #444;
-  vertical-align: -5px;
-  margin: 0 rem(10) 0 0;
+  width:15px;
+  height:15px;
+  border:1px solid #666;
+  vertical-align: -3px;
+  margin: 0 rem(8) 0 0;
   background-color: #d0d0d0;
 }
