@@ -94,7 +94,7 @@ var paths = {
     dist : 'public/siteart/'
   },
   svg : {
-    input : 'source/svg/SVG_in/*.svg',
+    input : 'source/svg/svg_in/*.svg',
     output : 'source/svg/',
   },
   fonts: {
