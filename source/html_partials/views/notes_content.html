@@ -1,0 +1,20 @@
+<button type="submit" value="{{$index}}" class="notes-btn close" ng-click="notes.removeAlert($event)">
+  <svg class="icn-close">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close_icon"></use>
+  </svg>
+</button>
+<div class="notes-content">
+  <p class="notes-text" ng-bind="s.note"  data-note="{{$index}}" ng-click="notes.setActive($event)"></p>
+  <p class="notes-author" ng-bind="s.author"  data-note="{{$index}}" ng-click="notes.setActive($event)"></p>
+</div>
+  <div class="notes-options">
+    <form class="notes-form">
+      <input type="checkbox"
+      id="done-{{$index}}"
+      ng-model="s.done"
+      ng-true-value="'YES'"
+      ng-false-value="'NO'"
+      />
+      <label for="done-{{$index}}" class="notes-checkbox">Done</label>
+    </form>
+  </div>

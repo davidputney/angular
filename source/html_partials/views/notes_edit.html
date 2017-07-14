@@ -1,0 +1,18 @@
+<div class="notes-modal edit" ng-if="$index == notes.noteNumber">
+  <!-- <div class="notes-content"> -->
+    <form ng-submit="notes.editAction()" class="foo">
+      <fieldset class="notes-content">
+        <input class="notes-text edit" ng-model="notes.editData.note" type="text" placeholder="Click to add a note ..."/>
+        <input class="notes-author edit" ng-model="notes.editData.author" type="text" placeholder="Click to add author"/>
+      </fieldset>
+      <fieldset class="notes-form edit">
+        <button type="submit" value="Submit" class="notes-btn hack">Save</button>
+        <input type="checkbox" id="done"
+          ng-model="notes.editData.done"
+          ng-true-value="'YES'"
+          ng-false-value="'NO'"
+          />
+        <label for="done" class="notes-checkbox hack">Done</label>
+      </fieldset>
+    </form>
+</div>
