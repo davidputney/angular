@@ -1,8 +1,5 @@
 
 angular.module('notesApp', ['ngRoute'])
-.value('Constant', {
-  MAGIC_NUMBER: 42
-})
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
       templateUrl: '/views/notes.html',
@@ -13,26 +10,39 @@ angular.module('notesApp', ['ngRoute'])
     var self=this;
     let data;
     self.modal;
+    self.noteNumber;
     let dataUrl = 'https://putneyangular.firebaseio.com/notes.json'
     getData.notes(dataUrl).then(function(response) {
       self.data = response.data;
+      self.noteNumber = self.data.length -1;
     }, function(errResponse) {
     }
   );
-  self.saveAction = function() {
-    var self=this;
-    let fooBar = self.data;
-    fooBar.push(self.formData);
-    let dataVal = setData.notes(fooBar);
+  self.editAction = function() {
+    let self=this;
+    // console.log(self.noteNumber);
+    let foo = self.data.slice();
+
+    foo[self.noteNumber] = self.editData;
+
+    if (self.noteNumber + 1 === self.data.length) {
+      let blankNote = {}
+      blankNote.note = '';
+      blankNote.author = '';
+      blankNote.done = 'NO';
+      foo.push(blankNote);
+    }
+    let dataVal = setData.notes(foo);
     self.data = dataVal;
+    self.noteNumber = self.data.length -1;
+    self.editData = null;
   },
   self.removeAlert = function(e) {
     var self=this;
+    console.log('click');
     self.modal = e.target.value;
-    console.log(self.modal);
   },
   self.dismissAlert = function(e) {
-    console.log('dismiss', e.target.value);
     var self=this;
     self.modal = e.target.value;
   },
@@ -42,7 +52,13 @@ angular.module('notesApp', ['ngRoute'])
     foo.splice(e.target.value, 1);
     let dataVal = setData.notes(foo);
     self.data = dataVal;
+    self.noteNumber = self.data.length -1;
     self.modal = null;
+  }
+  self.setActive = function(e) {
+    var self=this;
+    self.noteNumber = parseInt(e.target.dataset.note);
+    self.editData = self.data[self.noteNumber];
   }
 }])
 .factory('getData', ['$http', function($http){
@@ -109,23 +125,23 @@ angular.module('notesApp', ['ngRoute'])
 
 
 
- //  var notes = [
- //     {
- //       "note": "This is note number one here here hehre",
- //       "author": "Heywood Jablowme",
- //       "done": true
- //     },
- //     {
- //       "note": "This is two this is note text here",
- //       "author": "Seymour Butz",
- //       "done": false
- //     },
- //     {
- //       "note": "This is note three here here here here",
- //       "author": "Cora Spondent",
- //       "done": false
- //     }
- // ];
+//   var notes = [
+//      {
+//        "note": "This is note number one here here hehre",
+//        "author": "Heywood Jablowme",
+//        "done": "NO"
+//      },
+//      {
+//        "note": "This is two this is note text here",
+//        "author": "Seymour Butz",
+//        "done": "YES"
+//      },
+//      {
+//        "note": "This is note three here here here here",
+//        "author": "Cora Spondent",
+//        "done": "NO"
+//      }
+//  ];
 // //
 // //
 // var database = firebase.database();
