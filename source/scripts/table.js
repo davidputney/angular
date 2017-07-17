@@ -8,10 +8,11 @@ angular.module('notesApp', ['ngRoute'])
   }])
   .controller('notesController', ['getData', 'setData', function(getData, setData) {
     var self=this;
-    let data;
+    self.data;
     self.modal;
     self.noteNumber;
-    let dataUrl = 'https://putneyangular.firebaseio.com/notes.json'
+    let dataUrl = 'https://putneyangular.firebaseio.com/notes.json';
+
     getData.notes(dataUrl).then(function(response) {
       self.data = response.data;
       self.noteNumber = self.data.length -1;
@@ -42,14 +43,14 @@ angular.module('notesApp', ['ngRoute'])
     console.log('click');
     self.modal = e.target.value;
   },
-  self.dismissAlert = function(e) {
+  self.dismissAlert = function(i) {
     var self=this;
-    self.modal = e.target.value;
+    self.modal = i;
   },
-  self.removeAction = function(e) {
+  self.removeAction = function(i) {
     var self=this;
     let foo = self.data.slice();
-    foo.splice(e.target.value, 1);
+    foo.splice(i, 1);
     let dataVal = setData.notes(foo);
     self.data = dataVal;
     self.noteNumber = self.data.length -1;
